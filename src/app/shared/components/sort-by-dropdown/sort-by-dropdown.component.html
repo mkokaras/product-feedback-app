@@ -1,0 +1,37 @@
+<button class="sort-by paragraph-3" (click)="openDropdown.emit()">
+  <p class="text-grey-light-2">Sort by:</p>
+  <p class="text-grey-light-2">
+    {{ currOption }}
+  </p>
+  <img
+    *ngIf="!isOpen"
+    src="assets/shared/icon-arrow-down-white.svg"
+    alt="Dropdown icon"
+  />
+  <img
+    *ngIf="isOpen"
+    src="assets/shared/icon-arrow-up-white.svg"
+    alt="Dropdown icon"
+  />
+
+  <div class="options bg-white" *ngIf="isOpen">
+    <ul>
+      <li *ngFor="let option of options; let i = index" class="option">
+        <button (click)="onChangeSortOption(option)">
+          <span
+            class="option__text paragraph-1"
+            [ngClass]="{ 'option__text--selected': option === currOption }"
+          >
+            {{ option }}
+          </span>
+          <span class="option__icon" *ngIf="option === currOption">
+            <img
+              src="/assets/shared/icon-check.svg"
+              alt="Selected suggestion icon"
+            />
+          </span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</button>

@@ -1,0 +1,16 @@
+.upvote {
+  padding: 1.4rem 1.1rem 0.8rem;
+  width: 5rem;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.181px;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
+}

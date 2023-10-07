@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import "/src/app/sass/reset";
+@import "/src/app/sass/variables";
+@import "/src/app/sass/typography";
+@import "/src/app/sass/components";
+@import "/src/app/sass/utils";
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Jost", sans-serif;
+}

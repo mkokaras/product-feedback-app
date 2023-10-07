@@ -1,0 +1,138 @@
+<section class="section-suggestions bg-grey-light-3">
+  <div class="container suggestions">
+    <header class="suggestions__header">
+      <h1 class="heading-2 text-white">Frontend Mentor</h1>
+      <p class="paragraph-2 text-white">Feedback Board</p>
+    </header>
+
+    <div class="suggestions__categories bg-white">
+      <ul class="categories-list">
+        <li class="category" *ngFor="let category of categories$ | async">
+          <button
+            class="btn-tag"
+            (click)="onSelectCategory(category)"
+            [ngClass]="{
+              'btn-tag--selected': category === (currentCategory$ | async)
+            }"
+          >
+            {{ category }}
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="suggestions__roadmaps bg-white">
+      <h3 class="roadmaps__title">
+        <span class="heading-3 text-grey-dark-2">Roadmap</span>
+        <a
+          href="#"
+          class="roadmaps__view link-secondary"
+          (click)="onViewRoadMap($event)"
+          >View</a
+        >
+      </h3>
+      <ul class="roadmaps-list">
+        <li class="roadmap">
+          <span class="circle circle--planned">&nbsp;</span>
+          <span class="roadmap__type paragraph-1 text-grey-light-1">
+            Planned</span
+          >
+          <span class="roadmap__count paragraph-1 text-grey-light-1">
+            {{ (this.statusCounts$ | async)?.planned ?? 0 }}
+          </span>
+        </li>
+        <li class="roadmap">
+          <span class="circle circle--progress">&nbsp;</span>
+
+          <span class="roadmap__type paragraph-1 text-grey-light-1"
+            >In-progress</span
+          >
+          <span class="roadmap__count paragraph-1 text-grey-light-1">
+            {{ (this.statusCounts$ | async)?.['in-progress'] }}
+          </span>
+        </li>
+        <li class="roadmap">
+          <span class="circle circle--live">&nbsp;</span>
+          <span class="roadmap__type paragraph-1 text-grey-light-1">Live</span>
+          <span class="roadmap__count paragraph-1 text-grey-light-1">
+            {{ (this.statusCounts$ | async)?.live ?? 0 }}
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="suggestions__topbar bg-grey-dark-1">
+      <img
+        src="assets/suggestions/icon-suggestions.svg"
+        alt="Suggestions icon"
+        class="suggestions__topbar__icon"
+      />
+
+      <p class="suggestions__topbar__count heading-3 text-white">
+        {{ (feedbacks$ | async)?.length }}
+        Suggestions
+      </p>
+
+      <app-sort-by-dropdown
+        class="suggestions__topbar__sort"
+        [currOption]="(currentSortOption$ | async) ?? ''"
+        [options]="options"
+        [isOpen]="!!(toggleSort$ | async)"
+        (openDropdown)="onToggleSort()"
+        (changeSortOption)="onChangeSortOption($event)"
+      ></app-sort-by-dropdown>
+
+      <button
+        class="suggestions__topbar__add btn btn--primary-1"
+        (click)="onCreateFeedback()"
+      >
+        <img src="assets/shared/icon-plus.svg" alt="Plus icon" />
+        <span>Add Feedback</span>
+      </button>
+    </div>
+
+    <ul class="suggestions__list">
+      <li
+        class="bg-white"
+        *ngFor="
+          let feedback of (feedbacks$ | async) ?? []
+            | sortBy : (currentSortOption$ | async) ?? 'most upvotes'
+            | filterByCategory : (currentCategory$ | async) ?? 'all'
+        "
+      >
+        <a
+          href="#"
+          style="text-decoration: none"
+          class="bg-white suggestion"
+          (click)="onEdit($event, feedback.id)"
+        >
+          <app-upvote
+            class="suggestion__upvote"
+            [upvotes]="feedback.upvotes"
+            (upvoteChange)="onChange(feedback.id, $event)"
+          ></app-upvote>
+
+          <p class="suggestion__title heading-3 text-grey-dark-1">
+            {{ feedback.title }}
+          </p>
+          <p class="suggestion__description paragraph-1 text-grey-light-1">
+            {{ feedback.description }}
+          </p>
+          <div class="suggestion__category btn-tag">
+            {{ feedback.category }}
+          </div>
+
+          <a
+            href="#"
+            (click)="onViewComments($event, feedback.id)"
+            class="suggestion__comments"
+          >
+            <app-comments
+              [commentCount]="feedback?.comments?.length ?? 0"
+            ></app-comments>
+          </a>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>

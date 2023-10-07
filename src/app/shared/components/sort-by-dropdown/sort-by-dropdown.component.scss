@@ -1,0 +1,58 @@
+@use "/src/app/sass/variables" as v;
+
+.sort-by {
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  p {
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  p:nth-child(2) {
+    font-weight: 700;
+    text-transform: capitalize;
+  }
+}
+
+.options {
+  min-width: 25rem;
+  box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.35);
+  position: absolute;
+  top: 4.2rem;
+  left: 0;
+  border-radius: 10px;
+
+  ul {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}
+
+.option {
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: v.$clr-white;
+    cursor: pointer;
+    padding: 1.2rem 2.4rem;
+    border: none;
+    border-bottom: 1px solid rgba(v.$clr-grey-dark-1, 0.25);
+  }
+
+  &__text {
+    color: v.$clr-grey-light-1;
+
+    &--selected {
+      color: v.$clr-primary;
+    }
+  }
+}
