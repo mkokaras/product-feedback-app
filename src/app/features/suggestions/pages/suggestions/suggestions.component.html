@@ -91,7 +91,7 @@
       </button>
     </div>
 
-    <ul class="suggestions__list">
+    <ul class="suggestions__list" *ngIf="!!(feedbacks$ | async)">
       <li
         class="bg-white"
         *ngFor="
@@ -134,5 +134,24 @@
         </a>
       </li>
     </ul>
+    <div class="suggestions__empty bg-white" *ngIf="!(feedbacks$ | async)">
+      <div class="wrapper">
+        <img
+          src="assets/suggestions/illustration-empty.svg"
+          alt="Empty Suggestions Icon"
+          class="suggestions__empty__illustration"
+        />
+        <h2 class="heading-1 text-grey-dark-2">There is no feedback yet!</h2>
+        <p class="paragraph-1 text-grey-light-1">
+          Got a suggestion? Found a bug that needs to be squashed? We love
+          hearing about new ideas to improve our app.
+        </p>
+
+        <button class="btn btn--primary-1" (click)="onCreateFeedback()">
+          <img src="assets/shared/icon-plus.svg" alt="Plus icon" />
+          <span>Add Feedback</span>
+        </button>
+      </div>
+    </div>
   </div>
 </section>
