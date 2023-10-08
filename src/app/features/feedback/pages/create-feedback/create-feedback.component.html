@@ -1,1 +1,90 @@
-<p>create-feedback works!</p>
+<section class="section-new-feedback bg-grey-light-3">
+  <div class="new-feedback">
+    <a href="#" (click)="onGoBack()" class="go-back new-feedback__back">
+      <img src="/assets/shared/icon-arrow-left.svg" alt="" />
+      Go Back
+    </a>
+    <div class="wrapper bg-white">
+      <img
+        class="new-feedback__icon"
+        src="/assets/shared/icon-new-feedback.svg"
+        alt="Create feeback icon"
+      />
+      <h2 class="heading-1 text-grey-dark-1">Create New Feedback</h2>
+      <form class="form" (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div class="form__group">
+          <label for="title" class="form__label">Feedback Title</label>
+          <p class="form__input-description">
+            Add a short, descriptive headline
+          </p>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            class="form__input form__input--text"
+            formControlName="title"
+            [ngClass]="{
+              'form__input--invalid': this.form.get('title')?.invalid
+            }"
+          />
+
+          <span class="form__error-msg" *ngIf="this.form.get('title')?.invalid">
+            Can't be empty
+          </span>
+        </div>
+        <div class="form__group">
+          <label for="title" class="form__label">Category</label>
+          <p class="form__input-description">
+            Choose a category for your feedback
+          </p>
+          <app-category-dropdown
+            role="menu"
+            id="title"
+            [currOption]="this.form.get('category')?.value"
+            [options]="categories"
+            [isOpen]="toggleDropdown"
+            (openDropdown)="this.toggleDropdown = !this.toggleDropdown"
+            (changeSortOption)="this.form.get('category')?.setValue($event)"
+          ></app-category-dropdown>
+        </div>
+        <div class="form__group">
+          <label for="description" class="form__label">Feedback Detail</label>
+          <p class="form__input-description">
+            Include any specific comments on what should be improved, added,
+            etc.
+          </p>
+          <textarea
+            name="description"
+            id="description"
+            class="form__textarea"
+            formControlName="description"
+            [ngClass]="{
+              'form__textarea--invalid': this.form.get('description')?.invalid
+            }"
+          ></textarea>
+          <span
+            class="form__error-msg"
+            *ngIf="this.form.get('description')?.invalid"
+          >
+            Can't be empty
+          </span>
+        </div>
+        <div class="form__btn-group">
+          <button
+            class="form__btn form__btn--right btn btn--secondary"
+            type="button"
+            (click)="onCancel()"
+          >
+            Cancel
+          </button>
+          <button
+            class="from__btn form__btn--right btn btn--primary-1"
+            [disabled]="this.form.invalid"
+          >
+            Add Feedback
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

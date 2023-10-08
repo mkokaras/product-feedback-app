@@ -1,0 +1,20 @@
+<div class="options bg-white">
+  <ul>
+    <li *ngFor="let option of options; let i = index" class="option">
+      <button (click)="onChangeSortOption(option)">
+        <span
+          class="option__text paragraph-1"
+          [ngClass]="{ 'option__text--selected': option === currOption }"
+        >
+          {{ option }}
+        </span>
+        <span class="option__icon" *ngIf="option === currOption">
+          <img
+            src="/assets/shared/icon-check.svg"
+            alt="Selected suggestion icon"
+          />
+        </span>
+      </button>
+    </li>
+  </ul>
+</div>

@@ -1,16 +1,15 @@
-<button class="sort-by paragraph-3" (click)="openDropdown.emit()">
-  <p class="text-grey-light-2">Sort by:</p>
-  <p class="text-grey-light-2">
+<button class="category-option paragraph-3" (click)="openDropdown.emit()">
+  <p>
     {{ currOption }}
   </p>
   <img
     *ngIf="!isOpen"
-    src="assets/shared/icon-arrow-down-white.svg"
+    src="assets/shared/icon-arrow-down.svg"
     alt="Dropdown icon"
   />
   <img
     *ngIf="isOpen"
-    src="assets/shared/icon-arrow-up-white.svg"
+    src="assets/shared/icon-arrow-up.svg"
     alt="Dropdown icon"
   />
 

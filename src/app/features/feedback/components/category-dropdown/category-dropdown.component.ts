@@ -1,15 +1,15 @@
-import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { DropdownTabComponent } from '../dropdown-tab/dropdown-tab.component';
+import { CommonModule } from '@angular/common';
+import { DropdownTabComponent } from '@shared/components/dropdown-tab/dropdown-tab.component';
 
 @Component({
-  selector: 'app-sort-by-dropdown',
-  templateUrl: './sort-by-dropdown.component.html',
-  styleUrls: ['./sort-by-dropdown.component.scss'],
+  selector: 'app-category-dropdown',
   standalone: true,
   imports: [CommonModule, DropdownTabComponent],
+  templateUrl: './category-dropdown.component.html',
+  styleUrls: ['./category-dropdown.component.scss'],
 })
-export class SortByDropdownComponent {
+export class CategoryDropdownComponent {
   @Input() options: string[] = [];
   @Input() currOption!: string;
   @Input() isOpen: boolean = false;
