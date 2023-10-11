@@ -8,9 +8,8 @@ describe('SortByDropdownComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SortByDropdownComponent ]
-    })
-    .compileComponents();
+      imports: [SortByDropdownComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SortByDropdownComponent);
     component = fixture.componentInstance;

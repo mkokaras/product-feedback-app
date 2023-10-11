@@ -1,13 +1,17 @@
 <section class="section-roadmap bg-grey-light-3">
   <div class="container roadmap">
-    <header>
-      <a href="#" (click)="onGoBack()" class="go-back edit-feedback__back">
+    <header class="bg-grey-dark-1 roadmap__header">
+      <a
+        href="#"
+        (click)="$event.preventDefault(); onGoBack()"
+        class="go-back edit-feedback__back text-white"
+      >
         <img src="/assets/shared/icon-arrow-left.svg" alt="" />
         Go Back
       </a>
-      <h2>Roadmap</h2>
+      <h2 class="heading-1 text-white">Roadmap</h2>
       <stencil-button
-        class="suggestions__topbar__add"
+        class="roadmap__header__btn"
         [type]="'primary-1'"
         [text]="'Add Feedback'"
         (btnClick)="onCreateFeedback()"
@@ -17,35 +21,69 @@
     </header>
     <div class="feedbacks">
       <div class="feedbacks__wrapper">
-        <h3 class="feedbacks__title">Planned ({{ plannedCount$ | async }})</h3>
-        <p class="feedbacks__description">Ideas prioritized for research</p>
+        <h3 class="feedbacks__title heading-3 text-grey-dark-1">
+          Planned ({{ plannedCount$ | async }})
+        </h3>
+        <p class="feedbacks__description paragraph-1 text-grey-light-1">
+          Ideas prioritized for research
+        </p>
         <ul class="feedbacks__list">
           <li *ngFor="let plannedFeedback of planned$ | async">
-            <app-feedback-card [feedback]="plannedFeedback"></app-feedback-card>
+            <a
+              href="#"
+              (click)="
+                $event.preventDefault(); onEditFeedback(plannedFeedback.id)
+              "
+              class="feedback"
+            >
+              <app-feedback-card
+                [feedback]="plannedFeedback"
+              ></app-feedback-card>
+            </a>
           </li>
         </ul>
       </div>
 
       <div class="feedbacks__wrapper">
-        <h3 class="feedbacks__title">
+        <h3 class="feedbacks__title heading-3 text-grey-dark-1">
           In-Progress ({{ inProgresCount$ | async }})
         </h3>
-        <p class="feedbacks__description">Currently being developed</p>
+        <p class="feedbacks__description paragraph-1 text-grey-light-1">
+          Currently being developed
+        </p>
         <ul class="feedbacks__list">
           <li *ngFor="let progressFeedback of inProgress$ | async">
-            <app-feedback-card
-              [feedback]="progressFeedback"
-            ></app-feedback-card>
+            <a
+              href="#"
+              (click)="
+                $event.preventDefault(); onEditFeedback(progressFeedback.id)
+              "
+              class="feedback"
+            >
+              <app-feedback-card
+                [feedback]="progressFeedback"
+              ></app-feedback-card>
+            </a>
           </li>
         </ul>
       </div>
 
       <div class="feedbacks__wrapper">
-        <h3 class="feedbacks__title">Live ({{ liveCount$ | async }})</h3>
-        <p class="feedbacks__description">Released features</p>
+        <h3 class="feedbacks__title heading-3 text-grey-dark-1">
+          Live ({{ liveCount$ | async }})
+        </h3>
+        <p class="feedbacks__description paragraph-1 text-grey-light-1">
+          Released features
+        </p>
         <ul class="feedbacks__list">
-          <li *ngFor="let livedFeedback of live$ | async">
-            <app-feedback-card [feedback]="livedFeedback"></app-feedback-card>
+          <li *ngFor="let liveFeedback of live$ | async">
+            <a
+              href="#"
+              (click)="$event.preventDefault(); onEditFeedback(liveFeedback.id)"
+              class="feedback"
+            >
+              <app-feedback-card [feedback]="liveFeedback"></app-feedback-card>
+            </a>
           </li>
         </ul>
       </div>

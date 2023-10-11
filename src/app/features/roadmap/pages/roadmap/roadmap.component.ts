@@ -8,6 +8,7 @@ import { AppState } from 'src/app/store/app.reducer';
 import { Store } from '@ngrx/store';
 import * as fromRoadmap from '../../store/roadmap.selectors';
 import * as RoadmapActions from '../../store/roadmap.actions';
+import * as AppActions from 'src/app/store/app.actions';
 
 @Component({
   selector: 'app-roadmap',
@@ -46,7 +47,15 @@ export class RoadmapComponent implements OnInit {
     this.liveCount$ = this.store.select(fromRoadmap.selectLiveFeedbacksCount);
   }
 
-  onGoBack() {}
+  onGoBack() {
+    this.store.dispatch(AppActions.goBack());
+  }
 
-  onCreateFeedback() {}
+  onCreateFeedback() {
+    this.store.dispatch(RoadmapActions.startCreateFeedback());
+  }
+
+  onEditFeedback(id: number) {
+    this.store.dispatch(RoadmapActions.startEditFeedback({ id }));
+  }
 }

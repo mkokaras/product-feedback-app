@@ -10,7 +10,7 @@ export interface State {
   statusCounts: { [key in Feedback['status']]: number };
 }
 
-const initialState: State = {
+export const initialState: State = {
   suggestions: [],
   toggleSort: false,
   currSortOption: 'most upvotes',

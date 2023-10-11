@@ -7,6 +7,7 @@
     'border--progress' : feedback.status === 'in-progress',
 }
 "
+  *ngIf="feedback"
 >
   <div class="card__status paragraph-1 text-grey-light-1">
     <div
@@ -35,6 +36,7 @@
   <app-upvote
     class="card__upvotes"
     [upvotes]="feedback.upvotes"
+    [inline]="true"
     (upvoteChange)="onUpvoteChange(feedback.id, $event)"
   ></app-upvote>
 </div>

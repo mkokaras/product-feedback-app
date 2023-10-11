@@ -9,3 +9,12 @@ export const storeFeedbacks = createAction(
     feedbacks: Feedback[];
   }>()
 );
+
+export const startCreateFeedback = createAction(
+  '[Roadmap] Start Create  Feedback'
+);
+
+export const startEditFeedback = createAction(
+  '[Roadmap] Start Edit Feedback',
+  props<{ id: number }>()
+);

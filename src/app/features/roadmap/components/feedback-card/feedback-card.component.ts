@@ -24,6 +24,5 @@ export class FeedbackCardComponent {
 
   onUpvoteChange(id: number, votes: number) {
     this.upvoteChange.emit({ id, votes });
-    // this.store.dispatch(SuggestionActions.upvoteSuggestion({ id, votes }));
   }
 }

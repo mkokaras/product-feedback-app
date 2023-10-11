@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class UpvoteComponent {
   @Input() upvotes!: number;
+  @Input() inline: boolean = false;
   @Output() upvoteChange = new EventEmitter<number>();
 
   subscription!: Subscription;

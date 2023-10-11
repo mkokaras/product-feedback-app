@@ -15,6 +15,7 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('@storybook/addon-interactions'),
+    '@storybook/addon-styling-webpack',
   ],
   framework: {
     name: getAbsolutePath('@storybook/angular'),
@@ -23,5 +24,6 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
+  staticDirs: [{ from: '../src/assets', to: '/assets' }],
 };
 export default config;
