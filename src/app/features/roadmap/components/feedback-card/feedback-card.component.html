@@ -1,0 +1,40 @@
+<div
+  class="card bg-white"
+  [ngClass]="
+{
+    'border--live' : feedback.status === 'live',
+    'border--planned' : feedback.status === 'planned',
+    'border--progress' : feedback.status === 'in-progress',
+}
+"
+>
+  <div class="card__status paragraph-1 text-grey-light-1">
+    <div
+      class="circle"
+      [ngClass]="
+    {
+        'circle--live' : feedback.status === 'live',
+        'circle--planned' : feedback.status === 'planned',
+        'circle--progress' : feedback.status === 'in-progress',
+    }
+    "
+    ></div>
+    {{ feedback.status }}
+  </div>
+  <h4 class="card__title heading-3 text-grey-dark-1">{{ feedback.title }}</h4>
+  <p class="card__description paragraph-1 text-grey-light-1">
+    {{ feedback.description }}
+  </p>
+  <div class="card__category btn-tag">
+    {{ feedback.category }}
+  </div>
+  <app-comments
+    class="card__comments"
+    [commentCount]="feedback.comments?.length ?? 0"
+  ></app-comments>
+  <app-upvote
+    class="card__upvotes"
+    [upvotes]="feedback.upvotes"
+    (upvoteChange)="onUpvoteChange(feedback.id, $event)"
+  ></app-upvote>
+</div>

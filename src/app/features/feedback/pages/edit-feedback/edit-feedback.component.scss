@@ -1,0 +1,31 @@
+@use "/src/app/sass/variables" as v;
+
+.section-edit-feedback {
+  min-height: 100vh;
+  padding: 9.2rem 0;
+}
+
+.edit-feedback {
+  max-width: 50rem;
+  margin: 0 auto;
+
+  &__back {
+    margin-bottom: 6.8rem;
+  }
+
+  &__icon {
+    position: absolute;
+    top: -5.2rem;
+    transform: translateY(50%);
+  }
+
+  h2 {
+    margin-bottom: 4rem;
+  }
+}
+
+.wrapper {
+  padding: 5.2rem 4.2rem 4rem;
+  position: relative;
+  border-radius: 10px;
+}

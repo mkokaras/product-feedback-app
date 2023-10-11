@@ -82,13 +82,22 @@
         (changeSortOption)="onChangeSortOption($event)"
       ></app-sort-by-dropdown>
 
-      <button
+      <!-- <button
         class="suggestions__topbar__add btn btn--primary-1"
         (click)="onCreateFeedback()"
       >
         <img src="assets/shared/icon-plus.svg" alt="Plus icon" />
         <span>Add Feedback</span>
-      </button>
+      </button> -->
+
+      <stencil-button
+        class="suggestions__topbar__add"
+        [type]="'primary-1'"
+        [text]="'Add Feedback'"
+        (btnClick)="onCreateFeedback()"
+        [iconPath]="'assets/shared/icon-plus.svg'"
+      >
+      </stencil-button>
     </div>
 
     <ul class="suggestions__list" *ngIf="!!(feedbacks$ | async)">

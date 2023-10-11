@@ -1,10 +1,21 @@
 @use "/src/app/sass/variables" as v;
 
 .category-option {
-  display: flex;
+  display: grid;
   position: relative;
   align-items: center;
-  justify-content: space-between;
+
+  grid-template-columns: 1fr 1fr;
+
+  p {
+    justify-self: start;
+    text-transform: capitalize;
+  }
+
+  img {
+    justify-self: end;
+  }
+
   gap: 0.8rem;
   border: none;
   cursor: pointer;

@@ -19,8 +19,8 @@ export const FEEDBACK_ROUTES: Route[] = [
   {
     path: ':id/edit',
     loadComponent: () =>
-      import('./pages/feedback-detail/feedback-detail.component').then(
-        (comp) => comp.FeedbackDetailComponent
+      import('./pages/edit-feedback/edit-feedback.component').then(
+        (comp) => comp.EditFeedbackComponent
       ),
   },
 ];

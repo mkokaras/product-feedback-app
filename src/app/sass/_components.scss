@@ -209,6 +209,10 @@
     resize: none;
   }
 
+  &__btn--left {
+    margin-right: auto;
+  }
+
   &__btn-group {
     display: flex;
     gap: 1.6rem;

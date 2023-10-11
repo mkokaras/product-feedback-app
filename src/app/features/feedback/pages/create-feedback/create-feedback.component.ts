@@ -11,6 +11,7 @@ import { AppState } from 'src/app/store/app.reducer';
 import { Store } from '@ngrx/store';
 import * as FeedbackActions from '../../store/feedback.actions';
 import * as AppActions from 'src/app/store/app.actions';
+import { WebComponentsModule } from 'src/libs/web-components.module';
 
 @Component({
   selector: 'app-create-feedback',

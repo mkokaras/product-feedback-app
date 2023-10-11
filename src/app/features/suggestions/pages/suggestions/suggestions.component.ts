@@ -12,6 +12,7 @@ import * as fromSuggestions from '../../store/suggestions.selectors';
 import * as SuggestionActions from '../../store/suggestions.actions';
 import { SortByPipe } from '@shared/pipes/sort-by.pipe';
 import { FilterByCategoryPipe } from '@shared/pipes/filter-by-category.pipe';
+import { WebComponentsModule } from 'src/libs/web-components.module';
 
 @Component({
   selector: 'app-suggestions',
@@ -23,6 +24,7 @@ import { FilterByCategoryPipe } from '@shared/pipes/filter-by-category.pipe';
     SortByDropdownComponent,
     SortByPipe,
     FilterByCategoryPipe,
+    WebComponentsModule,
   ],
   templateUrl: './suggestions.component.html',
   styleUrls: ['./suggestions.component.scss'],

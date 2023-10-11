@@ -12,7 +12,7 @@ export class FeedbackEffects {
       this.actions$.pipe(
         ofType(FeedbackActions.createFeedback),
         switchMap(({ feedback }) =>
-          this.feedback.createOneFeedback(feedback).pipe(
+          this.feedbackService.createOneFeedback(feedback).pipe(
             map(() => {
               return AppActions.goBack();
             }),
@@ -26,5 +26,46 @@ export class FeedbackEffects {
     { dispatch: true }
   );
 
-  constructor(private actions$: Actions, private feedback: FeedbackService) {}
+  fetchFeedback = createEffect(() =>
+    this.actions$.pipe(
+      ofType(FeedbackActions.fetchFeedback),
+
+      switchMap(({ id }) =>
+        this.feedbackService.getOneFeedback(id).pipe(
+          map((feedback) => FeedbackActions.storeFeedback({ feedback })),
+          catchError(() => EMPTY)
+        )
+      )
+    )
+  );
+
+  updateFeedback = createEffect(() =>
+    this.actions$.pipe(
+      ofType(FeedbackActions.updateFeedback),
+      switchMap(({ id, feedback }) =>
+        this.feedbackService.updateOneFeedback(id, feedback).pipe(
+          map(() => AppActions.goBack()),
+          catchError(() => EMPTY)
+        )
+      )
+    )
+  );
+
+  deleteFeedback = createEffect(() =>
+    this.actions$.pipe(
+      ofType(FeedbackActions.deleteFeedback),
+      tap((id) => console.log(id)),
+      switchMap(({ id }) =>
+        this.feedbackService.deleteOneFeedback(id).pipe(
+          map(() => AppActions.goBack()),
+          catchError(() => EMPTY)
+        )
+      )
+    )
+  );
+
+  constructor(
+    private actions$: Actions,
+    private feedbackService: FeedbackService
+  ) {}
 }

@@ -1,4 +1,8 @@
-<button class="category-option paragraph-3" (click)="openDropdown.emit()">
+<button
+  class="category-option paragraph-3"
+  type="button"
+  (click)="$event.stopPropagation(); openDropdown.emit()"
+>
   <p>
     {{ currOption }}
   </p>

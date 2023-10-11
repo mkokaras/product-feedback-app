@@ -83,13 +83,13 @@ export class FeedbackService {
     return of(count);
   }
 
-  deleteOneFeedback(id: number): Observable<void> {
+  deleteOneFeedback(id: number): Observable<boolean> {
     const idx = db.productRequests.findIndex((feedback) => feedback.id === id);
 
     if (idx < 0) return EMPTY;
 
     db.productRequests.splice(idx, 1);
 
-    return EMPTY;
+    return of(true);
   }
 }

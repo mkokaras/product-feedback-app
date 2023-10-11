@@ -8,6 +8,7 @@ import { appReducer } from './store/app.reducer';
 import { SuggestionsEffects } from './features/suggestions/store/suggestions.effects';
 import { FeedbackEffects } from './features/feedback/store/feedback.effects';
 import { AppEffects } from './store/app.effects';
+import { RoadmapEffects } from './features/roadmap/store/roadmap.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +16,12 @@ import { AppEffects } from './store/app.effects';
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot(appReducer),
-    EffectsModule.forRoot([SuggestionsEffects, FeedbackEffects, AppEffects]),
+    EffectsModule.forRoot([
+      SuggestionsEffects,
+      FeedbackEffects,
+      RoadmapEffects,
+      AppEffects,
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent],

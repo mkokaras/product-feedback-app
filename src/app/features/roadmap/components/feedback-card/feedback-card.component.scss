@@ -1,0 +1,52 @@
+@use "/src/app/sass/variables" as v;
+
+.card {
+  display: grid;
+  border-radius: 10px;
+  padding: 3.2rem;
+
+  &__status {
+    display: flex;
+    gap: 1.6rem;
+    grid-row: 1;
+    margin-bottom: 0.8rem;
+  }
+
+  &__title {
+    grid-row: 2;
+  }
+
+  &__description {
+    grid-row: 3;
+    margin-bottom: 1.6rem;
+  }
+
+  &__category {
+    grid-row: 4;
+    margin-bottom: 1.6rem;
+  }
+
+  &__comments {
+    grid-row: 5;
+    justify-self: end;
+  }
+
+  &__upvote {
+    grid-row: 5;
+    justify-self: start;
+  }
+}
+
+.border {
+  &--planned {
+    border-top: 5px solid v.$clr-planned;
+  }
+
+  &--live {
+    border-top: 5px solid v.$clr-live;
+  }
+
+  &--progress {
+    border-top: 5px solid v.$clr-progress;
+  }
+}

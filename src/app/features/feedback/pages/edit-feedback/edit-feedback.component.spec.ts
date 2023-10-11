@@ -8,9 +8,8 @@ describe('EditFeedbackComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ EditFeedbackComponent ]
-    })
-    .compileComponents();
+      imports: [EditFeedbackComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(EditFeedbackComponent);
     component = fixture.componentInstance;

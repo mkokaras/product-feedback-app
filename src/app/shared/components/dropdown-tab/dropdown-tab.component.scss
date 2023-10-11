@@ -1,6 +1,7 @@
 @use "/src/app/sass/variables" as v;
 
 .options {
+  z-index: 999;
   min-width: 25rem;
   box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.35);
   background-color: black !important;
@@ -30,6 +31,7 @@
 
   &__text {
     color: v.$clr-grey-light-1;
+    text-transform: capitalize;
 
     &--selected {
       color: v.$clr-primary;
