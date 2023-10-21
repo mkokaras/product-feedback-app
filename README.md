@@ -51,9 +51,6 @@ Coming Soon!
 - Sass
 - CSS Grid
 - Desktop-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
 - [Angular](https://https://angular.io/) - Js Library
 - [Ngrx](https://ngrx.io/) - Reactive State Management (Store, Effects, Testing)
 - [StencilJs](https://stenciljs.com/) - Web Components
