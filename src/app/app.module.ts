@@ -9,6 +9,7 @@ import { SuggestionsEffects } from './features/suggestions/store/suggestions.eff
 import { FeedbackEffects } from './features/feedback/store/feedback.effects';
 import { AppEffects } from './store/app.effects';
 import { RoadmapEffects } from './features/roadmap/store/roadmap.effects';
+import { UserEffects } from './store/user.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { RoadmapEffects } from './features/roadmap/store/roadmap.effects';
       FeedbackEffects,
       RoadmapEffects,
       AppEffects,
+      UserEffects,
     ]),
   ],
   providers: [],

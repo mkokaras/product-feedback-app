@@ -76,6 +76,11 @@ export class CommentService {
       throw 'no feedback';
     }
 
-    return feedback;
+    const newFeedback = {
+      ...feedback,
+      comments: [...(feedback.comments ?? [])],
+    };
+
+    return newFeedback;
   }
 }

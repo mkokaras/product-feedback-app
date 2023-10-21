@@ -1,0 +1,183 @@
+@use "/src/app/sass/variables" as v;
+
+.section-details {
+  padding: 9.2rem 0 13rem 0;
+}
+
+.details {
+  max-width: 73rem;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.4rem;
+  }
+}
+
+.feedback {
+  padding: 2.8rem 3.2rem;
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  column-gap: 4rem;
+  border-radius: 10px;
+  margin-bottom: 2.4rem;
+
+  &__upvote {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  &__title {
+    grid-column: 2;
+    grid-row: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  &__description {
+    grid-column: 2;
+    grid-row: 2;
+    margin-bottom: 1.2rem;
+  }
+
+  &__category {
+    grid-column: 2;
+    justify-self: start;
+    color: #4661e6;
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: normal;
+    padding: 0.5rem 1.6rem;
+    border-radius: 10px;
+  }
+
+  &__comments {
+    grid-column: 3;
+    grid-row: 1 / span 3;
+    align-self: center;
+  }
+}
+
+.comments {
+  padding: 2.4rem 3.2rem;
+  margin-bottom: 2.4rem;
+  border-radius: 10px;
+}
+
+.comment {
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  column-gap: 3.2rem;
+  padding: 3.2rem 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(v.$clr-grey-light-1, 0.25);
+  }
+
+  &__user-avatar {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+
+  &__name {
+    grid-column: 2;
+    grid-row: 1;
+
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.194px;
+  }
+
+  &__username {
+    grid-column: 2;
+    grid-row: 2;
+
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  &__text {
+    margin-top: 1.6rem;
+    grid-column: 2 / -1;
+  }
+
+  &__reply {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    align-self: center;
+
+    background-color: transparent;
+    border: none;
+
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
+
+.comment-create {
+  padding: 2.4rem 3.4rem;
+  border-radius: 10px;
+
+  &__title {
+    margin-bottom: 2.4rem;
+  }
+
+  &__form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 8rem;
+    gap: 1.6rem;
+  }
+
+  &__input {
+    grid-column: 1 / -1;
+    grid-row: 1;
+
+    border-radius: 0.5rem;
+    border: none;
+    resize: none;
+    padding: 1.6rem 2.4rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: v.$clr-grey-dark-1;
+
+    &::placeholder {
+      color: v.$clr-grey-light-1;
+      line-height: normal;
+    }
+
+    &:focus,
+    &:focus-visible {
+      outline: none;
+      border: 1px solid v.$clr-secondary;
+    }
+
+    &.ng-invalid {
+      border: 1px solid v.$clr-danger;
+    }
+  }
+
+  &__chars {
+    grid-column: 1;
+    justify-self: start;
+    align-self: center;
+  }
+
+  &__btn-submit {
+    grid-column: 2;
+    justify-self: end;
+    align-self: center;
+
+    &--disabled {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+  }
+}

@@ -1,1 +1,95 @@
-<p>feedback-detail works!</p>
+<section
+  class="section-details bg-grey-light-3"
+  *ngIf="feedback$ | async as feedback"
+>
+  <div class="container details">
+    <header class="details__header">
+      <a href="#" class="go-back" (click)="$event.preventDefault(); onBack()">
+        <img src="assets/shared/icon-arrow-left.svg" alt="" />
+        Go Back
+      </a>
+      <stencil-button
+        [text]="'Edit Feedback'"
+        [type]="'primary-2'"
+        (btnClick)="onEditFeedback()"
+      ></stencil-button>
+    </header>
+    <div class="feedback bg-white">
+      <app-upvote
+        [upvotes]="feedback?.upvotes ?? 0"
+        class="feedback__upvote"
+        (upvoteChange)="onUpvoteFeedback($event)"
+      ></app-upvote>
+      <p class="heading-3 text-grey-dark-1 feedback__title">
+        {{ feedback?.title }}
+      </p>
+      <p class="paragraph-1 text-grey-light-1 feedback__description">
+        {{ feedback?.description }}
+      </p>
+      <div class="feedback__category bg-grey-light-2 text-secondary">
+        {{ feedback?.category }}
+      </div>
+      <app-comments
+        [commentCount]="feedback.comments?.length ?? 0"
+        class="feedback__comments"
+      ></app-comments>
+    </div>
+    <div class="comments bg-white">
+      <div class="comments__count heading-3 text-grey-dark-1">
+        {{ feedback.comments?.length ?? 0 }}
+        Comments
+      </div>
+      <ul class="comments__list">
+        <li class="comment" *ngFor="let comment of feedback.comments">
+          <img
+            [src]="comment.user.image"
+            [alt]="comment.user.name + 'avatar'"
+            class="comment__user-avatar"
+          />
+          <p class="text-grey-dark-1 comment__name">
+            {{ comment.user.name }}
+          </p>
+          <div class="comment__username text-grey-light-1">
+            @{{ comment.user.username }}
+          </div>
+          <p class="comment__text paragraph-2 text-grey-light-1">
+            {{ comment.content }}
+          </p>
+          <button class="comment__reply text-secondary">Reply</button>
+        </li>
+      </ul>
+    </div>
+    <div class="comment-create bg-white">
+      <h2 class="comment-create__title heading-3 text-grey-dark-1">
+        Add Comment
+      </h2>
+      <form
+        class="comment-create__form"
+        [formGroup]="this.commentFormGroup"
+        (ngSubmit)="onAddComment()"
+      >
+        <textarea
+          name="comment"
+          id="comment"
+          placeholder="Type your comment here"
+          class="comment-create__input bg-grey-light-3"
+          formControlName="comment"
+        ></textarea>
+        <p class="comment-create__chars paragraph-2 text-grey-light-1">
+          {{
+            MAX_COMMENT_LENGTH -
+              this.commentFormGroup.get("comment")?.value?.length
+          }}
+          Characters Left
+        </p>
+
+        <button
+          class="comment-create__btn-submit | btn btn--primary-1"
+          [disabled]="this.commentFormGroup.invalid"
+        >
+          Post comment
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
