@@ -30,7 +30,7 @@ Users should be able to:
 - Receive form validations when trying to create/edit feedback requests
 - Sort suggestions by most/least upvotes and most/least comments
 - Filter suggestions by category
-- [TODO] Add comments and replies to a product feedback request
+- [TODO] Add replies to a comment
 - Upvote product feedback requests
 - [TODO] Mobile View
 
